@@ -9,7 +9,10 @@ module.exports = class WelcomeMessagePrinter {
   read() {
     return new Promise((resolve, reject) => {
       fs.readFile(config.welcome_txt_filename, (err, data) => {
-        if (err) reject(err);
+        if (err) {
+          reject("'Welcome' text file not found");
+          return;
+        }
         this.data = data.toString();
         console.log(this.data);
         resolve(this.data);
