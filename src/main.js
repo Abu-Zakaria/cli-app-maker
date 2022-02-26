@@ -3,7 +3,7 @@ const app = new App();
 
 function run() {
   app.init_welcome().then(() => {
-    app.render_input();
+    app.start();
   });
 }
 

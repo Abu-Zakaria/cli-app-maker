@@ -5,6 +5,8 @@ const CLI = require("./support/cli");
 module.exports = class App {
   constructor() {
     this.prefix = app_config.prefix;
+    this.cli = new CLI();
+    this.running = true;
   }
 
   init_welcome() {
@@ -21,9 +23,19 @@ module.exports = class App {
     });
   }
 
+  start() {
+    const vm = this;
+    this.render_input()
+      .then((res) => {
+        if (this.running) this.render_input();
+      })
+      .catch((err) => {
+        if (this.cli.EXIT) this.running = false;
+      });
+  }
+
   render_input() {
-    const cli = new CLI();
-    cli.prompt(this.prefix);
+    return this.cli.prompt(this.prefix);
   }
 
   setPrefix(prefix) {
