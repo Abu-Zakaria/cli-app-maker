@@ -19,6 +19,7 @@ module.exports = class App {
         })
         .catch((err) => {
           reject("An error occured! " + err);
+          this.cli.exit();
         });
     });
   }
