@@ -7,12 +7,17 @@ module.exports = class App {
     this.prefix = app_config.prefix;
     this.cli = new CLI();
     this.running = true;
+    this.disable_welcome = false;
   }
 
   init_welcome() {
     const wm = new welcome_message_printer();
 
     return new Promise((resolve, reject) => {
+      if (this.disable_welcome) {
+        resolve();
+        return;
+      }
       wm.read()
         .then((data) => {
           resolve();
@@ -25,7 +30,6 @@ module.exports = class App {
   }
 
   start() {
-    const vm = this;
     this.render_input()
       .then((res) => {
         if (this.running) this.render_input();
@@ -41,5 +45,9 @@ module.exports = class App {
 
   setPrefix(prefix) {
     this.prefix = app_config.prefix = prefix;
+  }
+
+  disableWelcome() {
+    this.disable_welcome = true;
   }
 };
