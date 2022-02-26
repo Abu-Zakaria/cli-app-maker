@@ -18,7 +18,7 @@ module.exports = class App {
           resolve();
         })
         .catch((err) => {
-          throw "Something went wrong. " + err;
+          reject("An error occured! " + err);
         });
     });
   }
