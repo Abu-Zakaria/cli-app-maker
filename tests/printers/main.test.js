@@ -1,11 +1,11 @@
 const expect = require("chai").expect,
   should = require("chai").should();
-const { check } = require("./helpers");
+const { check } = require("./../helpers");
 
-const WelcomePrinter = require("../src/printers/welcome_message_printer");
+const WelcomePrinter = require("../../src/printers/welcome_message_printer");
 const welcome_printer = new WelcomePrinter();
 
-it("should run welcome printer correctly", function (done) {
+it("should show error message when reading without any welcome text file", function (done) {
   setTimeout(() => {
     welcome_printer.read().catch((err) => {
       check(done, () => {
