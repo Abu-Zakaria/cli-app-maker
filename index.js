@@ -1,3 +1,13 @@
-const cli_app = require("./src/main.js");
+const App = require("./src/app");
+const app = new App();
 
-cli_app.run();
+function run() {
+  app.init_welcome().then(() => {
+    app.start();
+  });
+}
+
+module.exports = {
+  app: app,
+  run: run,
+};
