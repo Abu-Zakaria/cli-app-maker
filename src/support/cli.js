@@ -19,7 +19,6 @@ module.exports = class CLI {
           reject(this.EXIT);
         }
 
-        this.readline.close();
         resolve();
       });
     });

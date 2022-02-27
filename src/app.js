@@ -30,9 +30,13 @@ module.exports = class App {
   }
 
   start() {
+    this.start_loop();
+  }
+
+  start_loop() {
     this.render_input()
       .then((res) => {
-        if (this.running) this.render_input();
+        if (this.running) this.start_loop();
       })
       .catch((err) => {
         if (this.cli.EXIT) this.running = false;
