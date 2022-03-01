@@ -1,14 +1,12 @@
 {
   "name": "@cynax/cli-app-maker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This package helps you create a cli app",
   "main": "index.js",
   "scripts": {
     "test": "mocha ./tests/**/*.test.js"
   },
-  "keywords": [
-    "cli"
-  ],
+  "keywords": ["cli"],
   "author": "Zakaria <asm.zakaria120@gmail.com>",
   "license": "MIT",
   "devDependencies": {
