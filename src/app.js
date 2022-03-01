@@ -39,7 +39,7 @@ module.exports = class App {
         if (this.running) this.start_loop();
       })
       .catch((err) => {
-        if (this.cli.EXIT) this.running = false;
+        if (err == this.cli.EXIT) this.stop();
       });
   }
 
@@ -53,5 +53,13 @@ module.exports = class App {
 
   disableWelcome() {
     this.disable_welcome = true;
+  }
+
+  addCommand(command) {
+    this.cli.addCommand(command);
+  }
+
+  stop() {
+    this.running = false;
   }
 };
