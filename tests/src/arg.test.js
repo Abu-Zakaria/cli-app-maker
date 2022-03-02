@@ -35,6 +35,6 @@ describe("arg class testing", function() {
         const val = arg.getValue();
 
         expect(key).to.equals("f");
-        expect(key).to.equals("ASD");
+        expect(val).to.equals("ASD");
     })
 })
