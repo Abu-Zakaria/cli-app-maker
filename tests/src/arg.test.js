@@ -27,4 +27,14 @@ describe("arg class testing", function() {
         expect(key).to.equals("qwe")
         expect(value).to.equals(null)
     })
+
+    it("splits argument while using - and =", function() {
+        const arg = new Arg("-f=ASD");
+
+        const key = arg.getKey();
+        const val = arg.getValue();
+
+        expect(key).to.equals("f");
+        expect(key).to.equals("ASD");
+    })
 })
