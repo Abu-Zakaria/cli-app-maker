@@ -37,4 +37,14 @@ describe("arg class testing", function() {
         expect(key).to.equals("f");
         expect(val).to.equals("ASD");
     })
+
+    it('works without using any dash prefix argument', function() {
+        const arg = new Arg("hello")
+
+        const key = arg.getKey();
+        const val = arg.getValue();
+
+        expect(key).to.equals(null)
+        expect(val).to.equals("hello")
+    })
 })
