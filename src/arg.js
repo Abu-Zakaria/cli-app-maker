@@ -6,12 +6,16 @@ class Arg {
     getBits(input) {
         if(input.substr(0, 2) == "--")
         {
-            return this.bitsByDoubleDash(input);
+            return this.bitsByDash(input);
+        }
+        else if (input.substr(0, 1) == "-")
+        {
+            return this.bitsByDash(input, 1);
         }
     }
 
-    bitsByDoubleDash(argument) {
-        const bits = argument.substr(2, argument.length - 1).split("=")
+    bitsByDash(argument, dashes_count = 2, value_separator = "=") {
+        const bits = argument.substr(dashes_count, argument.length - 1).split(value_separator)
 
         return {
             key: bits[0],
