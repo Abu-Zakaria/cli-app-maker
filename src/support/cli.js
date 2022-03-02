@@ -3,7 +3,7 @@ const readline = require("readline").createInterface({
   output: process.stdout,
 });
 const app_config = require("../config/app");
-const Arg = require("./arg.js");
+const Arg = require("../arg.js");
 
 module.exports = class CLI {
   constructor() {
