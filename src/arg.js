@@ -12,6 +12,13 @@ class Arg {
         {
             return this.bitsByDash(input, 1);
         }
+        else if(input.substr(0, 1) != "-")
+        {
+            return {
+                key: null,
+                val: input,
+            };
+        }
     }
 
     bitsByDash(argument, dashes_count = 2, value_separator = "=") {
