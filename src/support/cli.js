@@ -3,6 +3,7 @@ const readline = require("readline").createInterface({
   output: process.stdout,
 });
 const app_config = require("../config/app");
+const Arg = require("./arg.js");
 
 module.exports = class CLI {
   constructor() {
@@ -15,9 +16,19 @@ module.exports = class CLI {
   prompt(prefix = "") {
     return new Promise((resolve, reject) => {
       this.readline.question(prefix, (input) => {
-        if (this.commands[input]) {
-          const fn = this.commands[input];
-          fn();
+        const bits = input.split(" ");
+        if (bits.length < 1) {
+          resolve();
+          return;
+        }
+        const command = bits.shift();
+        const args = bits.map((bit) => {
+          return new Arg(bit);
+        });
+
+        if (this.commands[command]) {
+          const fn = this.commands[command];
+          fn(args);
         } else if (this.ifExit(input)) {
           this.exit();
           reject(this.EXIT);
