@@ -20,6 +20,14 @@ class Command {
   getName() {
     return this.name;
   }
+
+  addArg(arg) {
+    this.args[arg.bits.key] = arg;
+  }
+
+  getArg(key) {
+    return this.args[key];
+  }
 }
 
 module.exports = Command;
