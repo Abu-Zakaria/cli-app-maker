@@ -1,6 +1,6 @@
 const readline = require("readline").createInterface({
-  input: process.stdin,
-  output: process.stdout,
+  input : process.stdin,
+  output : process.stdout,
 });
 const app_config = require("../config/app");
 const Arg = require("../arg.js");
@@ -22,9 +22,7 @@ module.exports = class CLI {
           return;
         }
         const command = bits.shift();
-        const args = bits.map((bit) => {
-          return new Arg(bit);
-        });
+        const args = bits.map((bit) => { return new Arg(bit); });
 
         if (this.commands[command]) {
           const fn = this.commands[command];
@@ -39,9 +37,7 @@ module.exports = class CLI {
     });
   }
 
-  ifExit(input) {
-    return app_config.exit_command === input;
-  }
+  ifExit(input) { return app_config.exit_command === input; }
 
   exit() {
     console.log(app_config.exit_text);
